@@ -1,0 +1,3 @@
+grant codeBase "file:/Users/tasukutakahashi/itask/java/rpc/rmi2/tmp/" {
+	permission java.security.AllPermission;
+};

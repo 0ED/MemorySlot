@@ -1,0 +1,21 @@
+package sample;
+
+/**
+ * 例題プログラム：このサンプルを改変して大きなプログラムを作る足がかりにしてください。
+ */
+public class Example extends Object
+{
+	/**
+	 * サンプルのメインプログラム。
+	 */
+	public static void main(String[] arguments)
+	{
+		// サンプルのインスタンスを生成する。
+		Sample aSample = new Sample();
+
+		// サンプルのウィンドウを開く。
+		aSample.open();
+
+		return;
+	}
+}
