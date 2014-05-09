@@ -1,6 +1,6 @@
 DOMAIN = localhost
 PORT = 8000
-REGISTRY_NAME = rmixxx
+REGISTRY_NAME = rmisample
 CLIENT = RMISampleClient
 SERVER = RMISampleServer
 ROBJ = RMISampleImpl

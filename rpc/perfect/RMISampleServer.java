@@ -7,7 +7,7 @@ public class RMISampleServer {
 
 		try {
 			RMISampleImpl rsi = new RMISampleImpl();
-			Naming.rebind("rmi://localhost:8000/rmixxx", rsi);
+			Naming.rebind("rmi://localhost:8000/rmisample", rsi);
 			System.out.println("RMISample Server ready.");
 		}
 

@@ -1,5 +1,7 @@
 import java.net.*;
 import java.rmi.*;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Server 
 {
@@ -7,6 +9,7 @@ public class Server
 	{
 		try {
 			RMISImpl aSample = new RMISImpl();
+			//Map aMap = HashMap();
 			Naming.rebind("rmi://localhost:8000/rmixxx", aSample);
 			System.out.println("RMISample Server ready.");
 		}
