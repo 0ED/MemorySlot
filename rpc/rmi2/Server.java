@@ -11,8 +11,7 @@ public class Server {
       hello = new HelloImpl();
 
       // レジストリサーバに登録（再登録）
-      Naming.bind("//localhost/HelloImpl", hello);
-//    Naming.rebind("//localhost/hello", hello);
+      Naming.bind("rmi:/localhost:8000/rmisample", hello);
 
     } catch(Exception ex) {
       ex.printStackTrace();

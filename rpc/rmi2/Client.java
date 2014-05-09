@@ -7,7 +7,7 @@ public class Client {
         try {
             System.setSecurityManager(new RMISecurityManager());
 
-            hello = (Hello)Naming.lookup("rmi://localhost/HelloObject");
+            hello = (Hello)Naming.lookup("rmi://localhost:8000/rmisample");
 
             System.out.println(hello.sayHello());
         } catch (Exception e) {

@@ -1,5 +1,5 @@
 DOMAIN = localhost
-PORT = 1099
+PORT = 8000 
 REGISTRY_NAME = rmisample
 CLIENT = Client
 SERVER = Server
@@ -13,10 +13,12 @@ SRCS = ${CLASSES:%.class=%.java}
 
 all:
 	javac ${SRCS}
-	rmic ${ROBJ}
-
-server:	
-	rmiregistry ${PORT} & java -Djava.rmi.server.codebase=file:/// ${SERVER}
+	rmic -keep ${ROBJ} -v1.2 
+rmi:	
+	rmiregistry ${PORT} 
+server:
+	echo java -Djava.rmi.server.codebase=file:/// ${SERVER} 
+	# rmi://${DOMAIN}:${PORT}/rmisample
 client:
 	java rmi://${DOMAIN}:${PORT}/${REGISTRY_NAME}
 clean:
