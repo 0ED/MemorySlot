@@ -1,4 +1,4 @@
-SERVER = LaasServer
+SERVER = jp/laas/LaasServer
 CLIENT = Client
 MODULE = HelloMod
 IDL = Hello.idl

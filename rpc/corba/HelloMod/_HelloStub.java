@@ -5,7 +5,7 @@ package HelloMod;
 * HelloMod/_HelloStub.java .
 * IDL-to-Javaコンパイラ(ポータブル)、バージョン"3.2"によって生成されました
 * Hello.idlから
-* 2014年5月6日 23時13分32秒 JST
+* 2014年5月9日 23時42分16秒 JST
 */
 
 public class _HelloStub extends org.omg.CORBA.portable.ObjectImpl implements HelloMod.Hello

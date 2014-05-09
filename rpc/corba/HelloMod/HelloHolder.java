@@ -4,7 +4,7 @@ package HelloMod;
 * HelloMod/HelloHolder.java .
 * IDL-to-Javaコンパイラ(ポータブル)、バージョン"3.2"によって生成されました
 * Hello.idlから
-* 2014年5月6日 23時13分32秒 JST
+* 2014年5月9日 23時42分16秒 JST
 */
 
 public final class HelloHolder implements org.omg.CORBA.portable.Streamable

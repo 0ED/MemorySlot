@@ -1,14 +1,14 @@
 DOMAIN = localhost
-PORT = 8000 
+PORT = 8000
 REGISTRY_NAME = rmisample
-CLIENT = Client
-SERVER = Server
-ROBJ = RMISample
+CLIENT = RMISampleClient
+SERVER = RMISampleServer
+ROBJ = RMISampleImpl
 CLASSES = \
 	${CLIENT}.class \
 	${SERVER}.class \
-	${ROBJ}.class \
-	${ROBJ}Interface.class
+	RMISample.class \
+	RMISampleImpl.class
 SRCS = ${CLASSES:%.class=%.java}
 
 all:
@@ -17,10 +17,9 @@ all:
 rmi:	
 	rmiregistry ${PORT} 
 server:
-	echo java -Djava.rmi.server.codebase=file:/// ${SERVER} 
-	# rmi://${DOMAIN}:${PORT}/rmisample
+	java -Djava.rmi.server.codebase=file:/// ${SERVER} 
 client:
-	java rmi://${DOMAIN}:${PORT}/${REGISTRY_NAME}
+	java ${CLIENT} rmi://${DOMAIN}:${PORT}/${REGISTRY_NAME}
 clean:
 	${RM} ${CLASSES}
 	${RM} ${ROBJ}_Stub.java
