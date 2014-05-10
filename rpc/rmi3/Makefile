@@ -3,12 +3,12 @@ PORT = 8000
 REGISTRY_NAME = rmisample
 CLIENT = RMISampleClient
 SERVER = RMISampleServer
-ROBJ = RMISampleImpl
+ROBJ = LaasHashMapImpl
 CLASSES = \
 	${CLIENT}.class \
 	${SERVER}.class \
-	RMISample.class \
-	RMISampleImpl.class
+	LaasHashMap.class \
+	LaasHashMapImpl.class
 SRCS = ${CLASSES:%.class=%.java}
 
 all:
