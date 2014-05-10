@@ -10,34 +10,34 @@ public class LaasHashMapImpl<K,V>
 	extends UnicastRemoteObject 
 	implements LaasHashMap<K,V>
 {
-	private Map _hashMap;
+	private Map<K,V> _hashMap;
 
 	public LaasHashMapImpl(int initialCapacity, float loadFactor) 
 		throws RemoteException 
 	{
 		super();
-		this._hashMap = new HashMap(initialCapacity, loadFactor);
+		this._hashMap = new HashMap<K,V>(initialCapacity, loadFactor);
 	}
 
 	public LaasHashMapImpl(int initialCapacity) 
 		throws RemoteException 
 	{
 		super();
-		this._hashMap = new HashMap(initialCapacity);
+		this._hashMap = new HashMap<K,V>(initialCapacity);
 	}
 	
 	public LaasHashMapImpl(Map<? extends K, ? extends V> m) 
 		throws RemoteException 
 	{
 		super();
-		this._hashMap = new HashMap(m);
+		this._hashMap = new HashMap<K,V>(m);
 	}
 
 	public LaasHashMapImpl() 
 		throws RemoteException 
 	{
 		super();
-		this._hashMap = new HashMap();
+		this._hashMap = new HashMap<K,V>();
 	}
 
 	public void clear() 
@@ -68,6 +68,7 @@ public class LaasHashMapImpl<K,V>
 	{
 		return this._hashMap.get(key);
 	}
+
 	public boolean isEmpty() 
 		throws RemoteException 
 	{

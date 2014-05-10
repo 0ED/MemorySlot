@@ -1,8 +1,8 @@
 DOMAIN = localhost
 PORT = 8000
 REGISTRY_NAME = rmisample
-CLIENT = RMISampleClient
-SERVER = RMISampleServer
+CLIENT = Client
+SERVER = Server
 ROBJ = LaasHashMapImpl
 CLASSES = \
 	${CLIENT}.class \

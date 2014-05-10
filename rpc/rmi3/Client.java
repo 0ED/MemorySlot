@@ -7,8 +7,9 @@ public class Client
 	{
 		try {
 			Object obj = Naming.lookup(args[0]);
-			RMISample aSample = (RMISample) obj;
-			System.out.println(aSample.getMessage());
+			LaasHashMap<String,Integer> aHashMap = (LaasHashMap) obj;
+			aHashMap.put("rudds",52);
+			System.out.println(aHashMap.get("rudds"));
 		}
 
 		catch (RemoteException anException) {

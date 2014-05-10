@@ -6,8 +6,8 @@ public class Server
 	public static void main(String[] args) 
 	{
 		try {
-			RMISample aSample = new RMISample();
-			Naming.rebind("rmi://localhost:8000/rmisample", aSample);
+			LaasHashMapImpl aHashMap = new LaasHashMapImpl();
+			Naming.rebind("rmi://localhost:8000/rmisample", aHashMap);
 			System.out.println("RMISample Server ready.");
 		}
 
