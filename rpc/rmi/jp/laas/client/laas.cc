@@ -1,3 +1,12 @@
+/*
+ * Laas Compiler.
+ * Copyright (C) 2014 TasukuTAKAHASHI All Rights Reserved.
+ * This file is a part of Laas.
+ *
+ * Laas is , and open source software.
+ * you can redistribute it and/or modify it.
+ * Impress Paladin !! */
+
 #include "laas.h"
 
 /*
