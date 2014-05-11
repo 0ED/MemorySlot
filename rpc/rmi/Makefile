@@ -1,7 +1,7 @@
 DOMAIN 		= localhost
 PORT 		= 8000
 REGISTRY_NAME = rmisample
-CURDIR 		= rmi3
+CURDIR 		= rmi
 STUBDIR		= jp/laas
 CLIENT		= ${STUBDIR}/client/Client
 SERVER		= ${STUBDIR}/server/Server
