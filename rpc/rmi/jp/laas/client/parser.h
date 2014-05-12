@@ -7,8 +7,8 @@
  * you can redistribute it and/or modify it.
  * Use Laas !! */
 
-#ifndef __INCLUDE_LAAS_H__
-#define __INCLUDE_LAAS_H__
+#ifndef __INCLUDE_PARSER_H__
+#define __INCLUDE_PARSER_H__
 
 #include <iostream>
 #include <fstream>
@@ -19,9 +19,7 @@
 
 using namespace std;
 
-int main(int,char*[]);
-void redirect_to(const char*, int, char*[]);
 void open(const char* filename);
 void help(void);
 
-#endif /* !__INCLUDE_LAAS_H__ */
+#endif /* !__INCLUDE_PARSER_H__ */

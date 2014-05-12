@@ -5,7 +5,7 @@
  *
  * Laas is , and open source software.
  * you can redistribute it and/or modify it.
- * Impress Paladin !! */
+ * Use Laas !! */
 
 #include "laas.h"
 
@@ -13,31 +13,55 @@
  * Main of Laas Compliler.
  */
 int 
-main(int argumentCount, char* argumentValues[]) 
+main(int argument_count, char* argument_values[])
 {
-	if (argumentCount < 2) 
+	const char* filename = "error.log";
+	
+	if (argument_count < 2)
 	{
 		help();
 	}
 	else
 	{
-		print_log_of_error(argumentValues);
+		redirect_to(filename, argument_count, argument_values);
+		//open(filename);
 	}
 
 	return EXIT_SUCCESS;
 }
 
 /*
- * 
+ * It's open first error log file.
  */
 void
-print_log_of_error(char* argumentValues[]) 
+open(const char* filename)
 {
-	string a_command = "javac -J-Dfile.encoding=UTF8 -J-Duser.language=en ";
-	a_command += argumentValues[1];
-	a_command += " 2> ";
-	a_command += "error.log";
-	cout << a_command << endl;
+	int linecounter = 0;
+	string line = NULL;  
+	ifstream a_file("error.log");  
+	while(getline(a_file,line))  
+	{  
+		cout << line;  
+		linecounter++;
+	}
+
+	return;
+}
+
+/*
+ *  
+ */
+void
+redirect_to(const char* filename, int argument_count, char* argument_values[])
+{
+	string a_command;
+	a_command = "javac -J-Dfile.encoding=UTF8 -J-Duser.language=en ";
+	for (int i=1; i < argument_count; i++)
+	{
+		a_command += string(argument_values[i]) + " ";
+	}
+	a_command += "2> ";
+	a_command += filename;
 	system(a_command.c_str());
 
 	return;
@@ -51,4 +75,5 @@ help(void)
 {
 	return;
 }
+
 
