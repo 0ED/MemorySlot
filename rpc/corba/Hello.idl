@@ -1,8 +1,0 @@
-module HelloMod 
-{
-	interface Hello 
-	{
-		string getMessage();
-		oneway void shutdown();
-	};
-};

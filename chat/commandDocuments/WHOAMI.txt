@@ -1,6 +1,0 @@
-NAME
-	WHOAMI - 現在設定されているユーザ名を返します。
-SYNOPSIS
-	WHOAMI
-DESCRIPTION
-	現在設定されている自分のユーザ名を返します。もし一度もこのコマンドが実行されない場合の名前は「undefined+数字」を返します。
