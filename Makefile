@@ -6,8 +6,6 @@
 # http://web-k.github.io/blog/2012/11/08/git/ 
 #
 
-COMMENT = "init"
-
 all:
 	git add .
 push:
