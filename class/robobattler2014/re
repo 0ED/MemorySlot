@@ -1,0 +1,2 @@
+#! /bin/sh
+python .re.py $1 $2
