@@ -3,7 +3,7 @@
  * Copyright (C) 2014 TasukuTAKAHASHI All Rights Reserved.
  * This file is a part of Laas.
  *
- * Laas is , and open source software.
+ * Laas(Library as a service) is , and open source software.
  * you can redistribute it and/or modify it.
  * Use Laas !! */
 
@@ -15,16 +15,14 @@
 int 
 main(int argument_count, char* argument_values[])
 {
-	const char* filename = "error.log";
+	const char* in_file = "error.log";
 	
-	if (argument_count < 2)
-	{
+	if (argument_count < 2) {
 		help();
 	}
-	else
-	{
-		redirect_to(filename, argument_count, argument_values);
-		open(filename);
+	else {
+		redirect_to(in_file, argument_count, argument_values);
+		open(in_file);
 	}
 
 	return EXIT_SUCCESS;
@@ -36,27 +34,31 @@ main(int argument_count, char* argument_values[])
 void
 open(const char* filename)
 {
-	int linecounter = 0;
 	string line;  
+	smatch a_match;
 	ifstream a_file("error.log");  
-	while(getline(a_file,line))  
+	//regex re_error_type("[.*]:[0-9]+:[.*error]:[.*cannot find symbol]");
+	regex re_error_type("[.*cannot find symbol]");
+	
+	while(getline(a_file,line)) 
 	{  
-		cout << line << endl;  
-		linecounter++;
+		if(regex_search(line, a_match, re_error_type)) {
+			cout << line << endl;  
+		}
 	}
 
 	return;
 }
 
 /*
- *  
+ * 
  */
 void
 redirect_to(const char* filename, int argument_count, char* argument_values[])
 {
 	string a_command;
 	a_command = "javac -J-Dfile.encoding=UTF8 -J-Duser.language=en ";
-	for (int i=1; i < argument_count; i++)
+	for (int i=1; i < argument_count; i++) 
 	{
 		a_command += string(argument_values[i]) + " ";
 	}

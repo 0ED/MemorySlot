@@ -3,13 +3,13 @@ Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
 import org.google.HashMap;
                  ^
 ../jp/laas/client/Client.java:6: error: cannot find symbol
-		Map<String,Integer> aHashMap = new HashMap<String,Integer>();;
-		^
+Map<String,Integer> aHashMap = new HashMap<String,Integer>();;
+^
   symbol:   class Map
   location: class Client
 ../jp/laas/client/Client.java:6: error: cannot find symbol
-		Map<String,Integer> aHashMap = new HashMap<String,Integer>();;
-		                                   ^
+Map<String,Integer> aHashMap = new HashMap<String,Integer>();;
+                                   ^
   symbol:   class HashMap
   location: class Client
 3 errors

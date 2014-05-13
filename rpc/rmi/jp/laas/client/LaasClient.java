@@ -17,7 +17,6 @@ public class LaasClient
 		LaasHashMap<String,Integer> aHashMap = null;
 		try {
 			aHashMap = (LaasHashMap) Naming.lookup(args[0]);
-			//aHashMap = .getConstructor(int.class).newInstance(16);
 			aHashMap.put("rudds",52);
 			System.out.println(aHashMap.get("rudds"));
 		}
