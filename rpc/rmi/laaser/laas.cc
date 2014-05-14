@@ -42,7 +42,13 @@ open(const char* filename)
 	
 	while(getline(a_file,line)) 
 	{  
-		if(regex_search(line, a_match, re_error_type)) {
+		if(regex_search(line, a_match, re_error_type)) 
+		{
+			string error_code;
+			string error_point;
+
+			getline(a_file,error_code);
+			getline(a_file,error_point);
 			cout << line << endl;  
 		}
 	}
