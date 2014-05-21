@@ -1,0 +1,29 @@
+#ifndef _schedule_IDL_
+#define _schedule_IDL_
+
+module schedule
+{
+  valuetype Time
+  {
+    private long hour;
+    private long minute;
+    private long second;
+                
+    long getHour();
+    long getMinute();
+    long getSecond();
+  };
+
+  valuetype Plan
+  {
+    private Time start;
+    private Time end;
+  };
+
+  interface Scheduler
+  {
+    Plan getPlan();
+  };
+};
+
+#endif

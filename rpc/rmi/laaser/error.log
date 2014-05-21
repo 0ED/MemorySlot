@@ -1,0 +1,15 @@
+Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
+../jp/laas/client/Client.java:1: error: package org.google does not exist
+import org.google.HashMap;
+                 ^
+../jp/laas/client/Client.java:6: error: cannot find symbol
+		Map<String,Integer> aHashMap = new HashMap<String,Integer>();;
+		^
+  symbol:   class Map
+  location: class Client
+../jp/laas/client/Client.java:6: error: cannot find symbol
+		Map<String,Integer> aHashMap = new HashMap<String,Integer>();;
+		                                   ^
+  symbol:   class HashMap
+  location: class Client
+3 errors
