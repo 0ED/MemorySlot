@@ -10,6 +10,9 @@ public interface LaasHashMap<K,V>
 	extends Remote 
 {
 	/*
+	 * コンストラクタ
+	 */
+	/*
 	public LaasHashMapImpl(int initialCapacity, float loadFactor) throws RemoteException;
 	public LaasHashMapImpl(int initialCapacity) 
 		throws RemoteException;
@@ -27,7 +30,7 @@ public interface LaasHashMap<K,V>
 	public boolean containsKey(Object key)
 		throws RemoteException;
 
-	public void containsValue(Object value) 
+	public boolean containsValue(Object value) 
 		throws RemoteException;
 	
 	public Set<Map.Entry<K,V>> entrySet()

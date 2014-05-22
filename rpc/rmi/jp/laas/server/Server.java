@@ -5,6 +5,8 @@ import jp.laas.LaasHashMapImpl;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.net.MalformedURLException;
+import java.rmi.server.RemoteStub;
+import java.rmi.server.UnicastRemoteObject;
 
 public class Server 
 {
@@ -12,7 +14,8 @@ public class Server
 	{
 		try {
 			LaasHashMapImpl aHashMap = new LaasHashMapImpl();
-			Naming.rebind("rmi://localhost:8000/rmisample", aHashMap);
+			RemoteStub stub = UnicastRemoteObject.exportObject(aHashMap);
+			Naming.rebind("rmi://localhost:8000/rmisample", stub);
 			System.out.println("RMISample Server ready.");
 		}
 

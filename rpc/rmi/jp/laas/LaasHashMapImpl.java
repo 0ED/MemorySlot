@@ -6,107 +6,59 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Map;
 import java.util.Collection;
+import java.rmi.server.RemoteStub;
+import java.rmi.server.RemoteObject;
+import java.io.Serializable; 
 
 public class LaasHashMapImpl<K,V>
-	extends UnicastRemoteObject 
-	implements LaasHashMap<K,V>
+	extends HashMap<K,V>
+	implements Serializable,LaasHashMap<K,V>
 {
-	private Map<K,V> _hashMap;
 
-	public LaasHashMapImpl(int initialCapacity, float loadFactor) 
-		throws RemoteException 
+    /**
+     * Compares two remote objects for equality.
+     * Returns a boolean that indicates whether this remote object is
+     * equivalent to the specified Object. This method is used when a
+     * remote object is stored in a hashtable.
+     * If the specified Object is not itself an instance of RemoteObject,
+     * then this method delegates by returning the result of invoking the
+     * <code>equals</code> method of its parameter with this remote object
+     * as the argument.
+     * @param   obj     the Object to compare with
+     * @return  true if these Objects are equal; false otherwise.
+     * @see             java.util.Hashtable
+     */
+	public boolean equals(Object object) 
 	{
-		super();
-		this._hashMap = new HashMap<K,V>(initialCapacity, loadFactor);
-	}
-
-	public LaasHashMapImpl(int initialCapacity) 
-		throws RemoteException 
-	{
-		super();
-		this._hashMap = new HashMap<K,V>(initialCapacity);
-	}
-	
-	public LaasHashMapImpl(Map<? extends K, ? extends V> m) 
-		throws RemoteException 
-	{
-		super();
-		this._hashMap = new HashMap<K,V>(m);
-	}
-
-	public LaasHashMapImpl() 
-		throws RemoteException 
-	{
-		super();
-		this._hashMap = new HashMap<K,V>();
-	}
-
-	public void clear() 
-		throws RemoteException 
-	{
-		this._hashMap.clear();
+		if (object instanceof LaasHashMapImpl) {
+			return (object == this);
+		}
+		if (object instanceof RemoteStub) {
+			try {
+				RemoteStub ourStub = (RemoteStub) RemoteObject.toStub(this);
+				return ourStub.equals(object);
+			}
+			catch(NoSuchObjectException e) {
+			}
+		}
+		return false;
 	}
 
-	public boolean containsKey(Object key)
-		throws RemoteException 
+	/**
+	 * Returns a hashcode for a remote object.  Two remote object stubs
+	 * that refer to the same remote object will have the same hash code
+	 * (in order to support remote objects as keys in hash tables).
+	 *
+	 * @see java.util.Hashtable
+	 */
+	public int hashCode() 
 	{
-		return this._hashMap.containsKey(key);
-	}
-
-	public void containsValue(Object value) 
-		throws RemoteException 
-	{
-		this._hashMap.containsValue(value);
-	}
-	public Set<Map.Entry<K,V>> entrySet()
-		throws RemoteException 
-	{
-		return this._hashMap.entrySet();
-	}
-
-	public V get(Object key) 
-		throws RemoteException 
-	{
-		return this._hashMap.get(key);
-	}
-
-	public boolean isEmpty() 
-		throws RemoteException 
-	{
-		return this._hashMap.isEmpty();
-	}
-	public Set<K> keySet() 
-		throws RemoteException 
-	{
-		return this._hashMap.keySet();
-	}
-
-	public V put(K key, V value) 
-		throws RemoteException 
-	{
-		return this._hashMap.put(key,value);
-	}
-
-	public void putAll(Map<? extends K, ? extends V> m) 
-		throws RemoteException 
-	{
-		this._hashMap.putAll(m);
-	}
-
-	public V remove(Object key) 
-		throws RemoteException 
-	{
-		return this._hashMap.remove(key);
-	}
-	
-	public int size() 
-		throws RemoteException 
-	{
-		return this._hashMap.size();
-	}
-	public Collection<V> values() 
-		throws RemoteException 
-	{
-		return this._hashMap.values();
+		try {
+			Remote ourStub = RemoteObject.toStub(this);
+			return ourStub.hashCode();
+		}
+		catch(NoSuchObjectException e) {}
+		return super.hashCode(); 
 	}
 }
+
