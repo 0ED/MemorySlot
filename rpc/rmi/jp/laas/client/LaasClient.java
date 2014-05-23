@@ -17,6 +17,7 @@ public class LaasClient
 		LaasHashMap<String,Integer> aHashMap = null;
 		try {
 			aHashMap = (LaasHashMap) Naming.lookup(args[0]);
+			aHashMap.setConstructorByLaas(20);
 			aHashMap.put("rudds",52);
 			System.out.println(aHashMap.get("rudds") + " = aHashMap.get(\"rudds\")");
 		}
@@ -29,19 +30,5 @@ public class LaasClient
 		catch (NotBoundException anException) {
 			System.out.println("NotBoundException: " + anException);
 		}
-		/*
-		catch (NoSuchMethodException anException) {
-		}
-		catch (SecurityException anException) {
-		}
-		catch (InstantiationException anException) {
-		}
-		catch (IllegalAccessException anException) {
-		}
-		catch (IllegalArgumentException anException) {
-		}
-		catch (InvocationTargetException anException) {
-		}
-		*/
 	}
 }

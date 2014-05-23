@@ -12,17 +12,16 @@ public interface LaasHashMap<K,V>
 	/*
 	 * コンストラクタ
 	 */
-	/*
-	public LaasHashMapImpl(int initialCapacity, float loadFactor) throws RemoteException;
-	public LaasHashMapImpl(int initialCapacity) 
-		throws RemoteException;
-	
-	public LaasHashMapImpl(Map<? extends K, ? extends V> m) 
+	public void setConstructorByLaas(int initialCapacity, float loadFactor) throws RemoteException;
+
+	public void setConstructorByLaas(int initialCapacity) 
 		throws RemoteException;
 
-	public LaasHashMapImpl() 
+	public void setConstructorByLaas(Map<? extends K, ? extends V> m) 
 		throws RemoteException;
-	*/
+
+	public void setConstructorByLaas() 
+		throws RemoteException;
 
 	public void clear() 
 		throws RemoteException;

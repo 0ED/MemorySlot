@@ -12,7 +12,7 @@ CLASSES 	= \
 	${STUBDIR}/LaasHashMap.class \
 	${STUBDIR}/LaasHashMapImpl.class
 SRCS 		= ${CLASSES:%.class=%.java}
-BACKUP 		= rmi_back_2.zip
+BACKUP 		= rmi_back_3.zip
 
 all:
 	javac ${SRCS}

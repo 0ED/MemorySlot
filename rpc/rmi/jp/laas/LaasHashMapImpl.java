@@ -11,10 +11,114 @@ import java.rmi.server.RemoteObject;
 import java.io.Serializable; 
 
 public class LaasHashMapImpl<K,V>
-	extends HashMap<K,V>
 	implements Serializable,LaasHashMap<K,V>
 {
+	private Map<K,V> _hashMap;
+	
+	/*
+	 * コンストラクタ
+	 */
+	public LaasHashMapImpl()
+		throws RemoteException
+	{
+		super();
+		this._hashMap = new HashMap<K,V>();
+	}
+	
+	public void setConstructorByLaas(int initialCapacity, float loadFactor)
+		throws RemoteException
+	{
+		this._hashMap = new HashMap<K,V>(initialCapacity, loadFactor);
+	}
+	
+	public void setConstructorByLaas(int initialCapacity)
+		throws RemoteException
+	{
+		this._hashMap = new HashMap<K,V>(initialCapacity);
+	}
+	
+	public void setConstructorByLaas(Map<? extends K, ? extends V> m)
+		throws RemoteException
+	{
+		this._hashMap = new HashMap<K,V>(m);
+	}
+	
+	public void setConstructorByLaas()
+		throws RemoteException
+	{
+		this._hashMap = new HashMap<K,V>();
+	}
 
+	public void clear()
+		throws RemoteException
+	{
+		this._hashMap.clear();
+	}
+	
+	public boolean containsKey(Object key)
+		throws RemoteException
+	{
+		return this._hashMap.containsKey(key);
+	}
+	
+	public boolean containsValue(Object value)
+		throws RemoteException
+	{
+		return this._hashMap.containsValue(value);
+	}
+	
+	public Set<Map.Entry<K,V>> entrySet()
+		throws RemoteException
+	{
+		return this._hashMap.entrySet();
+	}
+	
+	public V get(Object key)
+		throws RemoteException
+	{
+		return this._hashMap.get(key);
+	}
+	
+	public boolean isEmpty()
+		throws RemoteException
+	{
+		return this._hashMap.isEmpty();
+	}
+	public Set<K> keySet()
+		throws RemoteException
+	{
+		return this._hashMap.keySet();
+	}
+	
+	public V put(K key, V value)
+		throws RemoteException
+	{
+		return this._hashMap.put(key,value);
+	}
+	
+	public void putAll(Map<? extends K, ? extends V> m)
+		throws RemoteException
+	{
+		this._hashMap.putAll(m);
+	}
+	
+	public V remove(Object key)
+		throws RemoteException
+	{
+		return this._hashMap.remove(key);
+	}
+	
+	public int size()
+		throws RemoteException
+	{
+		return this._hashMap.size();
+	}
+	public Collection<V> values()
+		throws RemoteException
+	{
+		return this._hashMap.values();
+	}
+	
     /**
      * Compares two remote objects for equality.
      * Returns a boolean that indicates whether this remote object is
