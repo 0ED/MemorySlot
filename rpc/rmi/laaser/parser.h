@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <cstring>
 #include <cstdlib>
 #include <regex>
@@ -25,7 +26,9 @@ using namespace std;
 static unordered_map<string,bool> _pack_list;
 static unordered_map<string,bool> _pack_check_list;
 
-void read_error(string filename);
 void init_parser(void);
+void read_error(string);
+void read_pack_error(ifstream&);
+void read_name_error(ifstream&);
 
 #endif /* !__INCLUDE_PARSER_H__ */

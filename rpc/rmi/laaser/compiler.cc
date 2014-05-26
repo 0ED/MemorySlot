@@ -1,26 +1,26 @@
 #include "compiler.h"
 
 /*
- * It initializes compiler flag map.
+ * It initializes compiler option map.
  */
 void 
 init_compiler()
 {
-	_compiler_command_map.insert(make_pair(".c", "cc ")); 
-	_compiler_command_map.insert(make_pair(".cc", "c++ ")); 
-	_compiler_command_map.insert(make_pair(".cpp", "c++ ")); 
-	_compiler_command_map.insert(make_pair(".cxx", "c++ ")); 
-	_compiler_command_map.insert(make_pair(".java", "javac -J-Dfile.encoding=UTF8 -J-Duser.language=en ")); 
-	_compiler_command_map.insert(make_pair(".pl", "perl ")); 
-	_compiler_command_map.insert(make_pair(".py", "python ")); 
-	_compiler_command_map.insert(make_pair(".rb", "ruby ")); 
+	_compiler_command_map[".c"] = "cc "; 
+	_compiler_command_map[".cc"] = "c++ ";
+	_compiler_command_map[".cpp"] = "c++ ";
+	_compiler_command_map[".cxx"] = "c++ ";
+	_compiler_command_map[".java"] = "javac -J-Dfile.encoding=UTF8 -J-Duser.language=en ";
+	_compiler_command_map[".pl"] = "perl ";
+	_compiler_command_map[".py"] = "python ";
+	_compiler_command_map[".rb"] = "ruby ";
 
 	return;
 }
 
 /*
  * It gets a filename extension of compiler from argument_values.
- * If it unsupported, return ""
+ * If it unsupported, return "".
  */
 string 
 get_compiler_name(int argument_count, char* argument_values[]) 

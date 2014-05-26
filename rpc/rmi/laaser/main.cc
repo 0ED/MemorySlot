@@ -6,7 +6,6 @@
 int 
 main(int argument_count, char* argument_values[])
 {
-	init_compiler();
 
 	if (argument_count < 2) {
 		return EXIT_FAILURE;
@@ -14,11 +13,12 @@ main(int argument_count, char* argument_values[])
 	else {
 		string in_file = "error.log";
 
-		string compiler_name = get_compiler(argument_count, argument_values);
+		init_compiler();
+		string compiler_name = get_compiler_name(argument_count, argument_values);
 		if (compiler_name.empty()) return EXIT_FAILURE;
 		
-		cout << compiler_name << endl;
 		compile_and_redirect_to(compiler_name, in_file, argument_count, argument_values);
+		init_parser();
 		read_error(in_file);
 	}
 

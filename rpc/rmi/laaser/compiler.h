@@ -11,18 +11,17 @@
 #define __INCLUDE_COMPILER_H__
 
 #include <iostream>
-#include <fstream>
 #include <cstring>
 #include <cstdlib>
 #include <regex>
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
-static map<string,string> _compiler_command_map;
+static unordered_map<string,string> _compiler_command_map;
 
 void init_compiler(void);
-string get_compiler(int, char*[]);
+string get_compiler_name(int, char*[]);
 void compile_and_redirect_to(string, string, int, char*[]);
 
 #endif /* !__INCLUDE_COMPILER_H__ */
