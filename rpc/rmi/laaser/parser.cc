@@ -90,17 +90,26 @@ void
 read_name_error(ifstream &a_file)
 {
 	// ex: new Hoge()
-	vector<string> tokens;
 	string lines[NAME_ERROR_LINE_NUM];
 
 	for (int i=0; i<NAME_ERROR_LINE_NUM; i++) {
 		getline(a_file,lines[i]);
 	}
+
+	vector<char*> pack_classes;
+	vector<char*> user_classes;
 	rep_split(a_token,lines[3]," \t:") {
-		
+		pack_classes.push_back(a_token);	
 	}
 	rep_split(a_token,lines[4]," \t:") {
-		
+		user_classes.push_back(a_token);	
+	}
+
+	if (strcmp(pack_classes[1],"class") == 0) 
+	{
+		if(_pack_check_list[pack_classes[2]]) {
+			
+		}
 	}
 
 	return;
