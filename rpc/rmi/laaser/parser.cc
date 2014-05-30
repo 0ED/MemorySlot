@@ -114,3 +114,16 @@ read_name_error(ifstream &a_file)
 
 	return;
 }
+
+
+void read_user_codes() 
+{
+	
+}
+
+
+void write_user_codes() 
+{
+	
+}
+
