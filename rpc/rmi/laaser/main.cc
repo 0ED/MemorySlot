@@ -11,15 +11,15 @@ main(int argument_count, char* argument_values[])
 		return EXIT_FAILURE;
 	}
 	else {
-		string in_file = "error.log";
+		string error_log = "error.log";
 
 		init_compiler();
 		string compiler_name = get_compiler_name(argument_count, argument_values);
 		if (compiler_name.empty()) return EXIT_FAILURE;
 		
-		compile_and_redirect_to(compiler_name, in_file, argument_count, argument_values);
-		init_parser();
-		read_error(in_file);
+		compile_and_redirect_to(compiler_name, error_log, argument_count, argument_values);
+		init_translater();
+		translate_to_meta(error_log);
 	}
 
 	return EXIT_SUCCESS;

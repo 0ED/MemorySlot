@@ -4,7 +4,7 @@ CXX			= c++
 OBJS		= \
 		main.o \
 		compiler.o \
-		parser.o
+		translater.o
 HEADS		= ${OBJS:%.o=%.h}
 SRCS		= ${OBJS:%.o=%.cc}
 LOG_FILE	= error.log
