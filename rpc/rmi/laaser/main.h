@@ -14,7 +14,7 @@
 #include <cstring>
 #include <cstdlib>
 #include "compiler.h"
-#include "parser.h"
+#include "translater.h"
 
 using namespace std;
 

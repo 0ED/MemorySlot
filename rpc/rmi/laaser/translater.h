@@ -23,10 +23,17 @@
 
 using namespace std;
 
-static unordered_map<string,bool> _pack_list;
-static unordered_map<string,bool> _pack_check_list;
 
-void init_parser(void);
+typedef struct {
+	ifstream file;
+	unordered_map<string,bool> pack_list;
+	unordered_map<string,bool> pack_use_list;
+} UserCode;
+
+static unordered_map<string,UserCode> _userCodes;
+
+string convet_laas_name(string);
+UserCode get_user_code(string);
 void read_error(string);
 void read_pack_error(ifstream&);
 void read_name_error(ifstream&);
