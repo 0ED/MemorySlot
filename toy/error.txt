@@ -1,0 +1,8 @@
+Picked up _JAVA_OPTIONS: -Dfile.encoding=UTF-8
+/Users/tasukutakahashi/iTask/java/toy/Sample.java:9: エラー: 文ではありません
+	ss
+	^
+/Users/tasukutakahashi/iTask/java/toy/Sample.java:9: エラー: ';'がありません
+	ss
+	  ^
+エラー2個
