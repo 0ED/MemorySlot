@@ -5,8 +5,11 @@ import joinTabler.FileDroper;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.dnd.DropTarget;
+import javax.swing.BoxLayout;
 
 public class MainFrame extends JFrame
 {
@@ -28,16 +31,29 @@ public class MainFrame extends JFrame
 	
 	public void createDragArea()
 	{
-		JPanel aDropArea = new JPanel();
-		aDropArea.setLocation(
+		JPanel aPanel = new JPanel();
+		aPanel.add(new JLabel("ダメよーダメダメ!"));
+		aPanel.add(new JLabel("ダメよーダメダメ!"));
+		aPanel.setLayout(new BoxLayout(aPanel, BoxLayout.PAGE_AXIS));
+		JScrollPane aScrollPane = new JScrollPane(aPanel);
+		aScrollPane.setLocation(
 			Const.WIN_WIDTH/2-Const.DRAG_AREA_WIDTH/2,
 			Const.WIN_HEIGHT/2-Const.DRAG_AREA_HEIGHT/2
 		);
-		aDropArea.setSize(Const.DRAG_AREA_WIDTH,Const.DRAG_AREA_HEIGHT);
-		aDropArea.setBackground(new Color(255, 255, 255));
-		new DropTarget(aDropArea,new FileDroper());
-        this.getContentPane().add(aDropArea);
+		aScrollPane.setSize(Const.DRAG_AREA_WIDTH,Const.DRAG_AREA_HEIGHT);
+		aScrollPane.setBackground(new Color(255, 255, 255));
+
+
+		FileDroper aFileDroper = new FileDroper();
+		System.out.println(aPanel);
+		aFileDroper.setParentPanel(aPanel,aScrollPane,this);
+
+		new DropTarget(aScrollPane,aFileDroper);
+        this.getContentPane().add(aScrollPane);
+
 	}
+
+
 
 	public void createJoinButton()
 	{

@@ -13,20 +13,29 @@ import java.awt.dnd.DropTargetDragEvent;
 import java.awt.dnd.DropTargetDropEvent;
 import java.awt.dnd.DropTargetEvent;
 import java.awt.dnd.DropTargetListener;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import java.io.IOException;
 
 public class FileDroper extends DropTarget
 {
-	private JPanel dropArea;
+	private JPanel dragArea;
+	private JScrollPane scrollArea;
+	private JFrame frame;
 
 	public FileDroper()
 	{
-		this.dropArea = null;
+		this.dragArea = null;
+		this.scrollArea = null;
 	}
 
-	public void setDropArea(JPanel aDropArea)
+	public void setParentPanel(JPanel aPanel, JScrollPane aScrollPane, JFrame aFrame)
 	{
-		this.dropArea = aDrogArea;
+		this.dragArea = aPanel;
+		this.scrollArea = aScrollPane;
+		this.frame = aFrame;
 	}
 
 	public void drop(DropTargetDropEvent anEvent) 
@@ -38,17 +47,25 @@ public class FileDroper extends DropTarget
 			try 
 			{
 				@SuppressWarnings("unchecked")
-				List<File> fileList = (List<File>)aTrans.getTransferData(DataFlavor.javaFileListFlavor);
-				for (File file : fileList) 
+				List<File> files = (List<File>)aTrans.getTransferData(DataFlavor.javaFileListFlavor);
+				System.out.println(this.dragArea);
+				for (File aFile : files) 
 				{
-					System.out.println(file.getAbsolutePath());
+					JLabel aLabel = new JLabel(aFile.getName());
+					this.dragArea.add(aLabel);
+					aLabel.repaint();
+					this.frame.repaint();
+					this.dragArea.repaint();
+					this.scrollArea.repaint();
+					System.out.println(this.dragArea.getComponentCount());
+					System.out.println(aFile.getName());
 				}
 			}
 			catch (UnsupportedFlavorException e) {
 				e.printStackTrace();			
 			}
 			catch (IOException e) {
-				e.printStackTrace();			
+				e.printStackTrace();
 			}
 		}
 
