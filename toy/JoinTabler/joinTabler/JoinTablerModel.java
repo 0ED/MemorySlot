@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
 import java.util.Iterator;
+import java.util.Locale;
 
 import jxl.Cell;
 import jxl.Sheet;
@@ -139,6 +140,9 @@ public class JoinTablerModel extends mvc.Model
 		WorkbookSettings aWorkbookSettings = null;
 
 		aWorkbookSettings = new WorkbookSettings();
+		aWorkbookSettings.setLocale(new Locale("ja","JP"));
+		aWorkbookSettings.setEncoding("Cp1252");
+		aWorkbookSettings.setWriteAccess("something");
 		aWorkbookSettings.setGCDisabled(true);
 
 		Iterator<File> anIterator = this.files.iterator();
