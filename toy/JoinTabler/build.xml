@@ -4,6 +4,7 @@
 
   <property name="package" value="joinTabler" />
   <property name="jxl" value="lib/jxl" />
+  <property name="mvc" value="lib/mvc" />
   <property name="packagenames" value="${package},${jxl}" />
   <property name="destdir" value="./Classes" />
   <property name="docdir" value="./JavaDoc" />
@@ -36,12 +37,13 @@
 	  encoding="UTF-8"
 	  deprecation="on"
 	  verbose="false">
-  <compilerarg value="-J-Dfile.encoding=UTF8" />
-  <compilerarg value="-Xlint:unchecked" />
-  <classpath>
-  <pathelement location="." />
-  <pathelement location="${jxl}.jar" />
-  </classpath>
+	  <compilerarg value="-J-Dfile.encoding=UTF8" />
+	  <compilerarg value="-Xlint:unchecked" />
+	  <classpath>
+		  <pathelement location="." />
+		  <pathelement location="${jxl}.jar" />
+		  <pathelement location="${mvc}.jar" />
+	  </classpath>
   </javac>
   <echo>on ${date} at ${time}</echo>
   </target>
@@ -52,6 +54,7 @@
 	  basedir="${destdir}"
 	  manifest="${package}.mf">
 	  <zipfileset src="${jxl}.jar" />
+	  <zipfileset src="${mvc}.jar" />
 	  <fileset file="./${propertydir}/${destination_list}.properties" />
   </jar>
   <echo>on ${date} at ${time}</echo>
@@ -90,22 +93,23 @@
   <target name="doc" depends="all" description="make document (javadoc)">
   <mkdir dir="${docdir}" />
   <javadoc
-  locale="en_US"
-  sourcepath="${basedir}"
-  destdir="${docdir}"
-  packagenames="${packagenames}"
-  author="true"
-  version="true"
-  charset="UTF-8"
-  encoding="UTF-8"
-  docencoding="UTF-8"
-  access="private">
-  <doctitle>${doc-title}</doctitle>
-  <bottom>${copyright}</bottom>
-  <classpath>
-  <pathelement location="." />
-  <pathelement location="${jxl}.jar" />
-  </classpath>
+	  locale="en_US"
+	  sourcepath="${basedir}"
+	  destdir="${docdir}"
+	  packagenames="${packagenames}"
+	  author="true"
+	  version="true"
+	  charset="UTF-8"
+	  encoding="UTF-8"
+	  docencoding="UTF-8"
+	  access="private">
+	  <doctitle>${doc-title}</doctitle>
+	  <bottom>${copyright}</bottom>
+	  <classpath>
+		  <pathelement location="." />
+		  <pathelement location="${jxl}.jar" />
+		  <pathelement location="${mvc}.jar" />
+	  </classpath>
   </javadoc>
   <echo>on ${date} at ${time}</echo>
   </target>
