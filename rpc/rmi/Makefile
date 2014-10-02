@@ -1,4 +1,4 @@
-DOMAIN 		= localhost
+DOMAIN 		= 133.101.48.182
 PORT 		= 8000
 REGISTRY_NAME = rmisample
 CURDIR 		= rmi
@@ -13,6 +13,7 @@ CLASSES 	= \
 	${STUBDIR}/LaasHashMapImpl.class
 SRCS 		= ${CLASSES:%.class=%.java}
 BACKUP 		= rmi_back_3.zip
+RMI_HOST	= rmi://$(DOMAIN):$(PORT)
 
 all:
 	javac ${SRCS}
@@ -20,9 +21,9 @@ all:
 rmi:	
 	rmiregistry ${PORT} 
 server:
-	java -Djava.rmi.server.codebase=file:///jp/laas/ ${SERVER} 
+	java -Djava.rmi.server.codebase=file:///jp/laas/ $(SERVER) $(RMI_HOST)
 client:
-	java ${CLIENT} rmi://${DOMAIN}:${PORT}/${REGISTRY_NAME}
+	java ${CLIENT} $(RMI_HOST)/$(REGISTRY_NAME)
 clean:
 	${RM} ${CLASSES}
 	${RM} ${STUBDIR}/${ROBJ}_Stub.java

@@ -15,7 +15,7 @@ public class Server
 		try {
 			LaasHashMapImpl aHashMap = new LaasHashMapImpl();
 			RemoteStub stub = UnicastRemoteObject.exportObject(aHashMap);
-			Naming.rebind("http://133.101.57.68:8000/rmisample", stub);
+			Naming.rebind(args[0]+"/rmisample", stub);
 			System.out.println("RMISample Server ready.");
 		}
 
