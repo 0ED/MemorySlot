@@ -11,7 +11,7 @@ public class LaasClient
 	public static void main(String[] args) 
 	{
 		try {
-			LaasHashMap<String,Integer> aHashMap = (LaasHashMap) Naming.lookup("rmi://localhost:8000/rmisample");
+			LaasHashMap<String,Integer> aHashMap = (LaasHashMap) Naming.lookup(args[0]+"/rmisample");
 			aHashMap.setConstructorByLaas(20);
 			aHashMap.put("rudds",52);
 			System.out.println(aHashMap.get("rudds"));
