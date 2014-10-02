@@ -13,10 +13,13 @@ public class Server
 	public static void main(String[] args) 
 	{
 		try {
+			String nameAddress = args[0]+"/rmisample";
 			LaasHashMapImpl aHashMap = new LaasHashMapImpl();
 			RemoteStub stub = UnicastRemoteObject.exportObject(aHashMap);
-			Naming.rebind(args[0]+"/rmisample", stub);
+			Naming.rebind(nameAddress, stub);
 			System.out.println("RMISample Server ready.");
+
+			System.out.println(nameAddress);
 		}
 
 		catch (RemoteException re) {
