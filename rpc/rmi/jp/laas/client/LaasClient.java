@@ -1,11 +1,23 @@
-import org.laas.Map;
-import org.laas.HashMap;
+package jp.laas.client;
 
-public class Client 
-{	{hoge();LaasMap<String,Integer> aHashMap = (LaasHashMap) Naming.lookup("rmi://localhost:8000/rmisample"); aHashMap.setConstructorByLaas();aHashMap.put("rudds",52); System.out.println(aHashMap.get("rudds"));hoge();}
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import jp.laas.LaasHashMap;
 
-.println(aHashMap.get("rudds"));hoge();}
-	void hoge()
-	{		LaasMap<String,Integer> aMap = (LaasHashMap) Naming.lookup("rmi://localhost:8000/rmisample"); aMap.setConstructorByLaas();
-
-}}
+public class LaasClient 
+{
+	public static void main(String[] args) 
+	{
+		try {
+			LaasHashMap<String,Integer> aHashMap = (LaasHashMap) Naming.lookup("rmi://localhost:8000/rmisample");
+			aHashMap.setConstructorByLaas(20);
+			aHashMap.put("rudds",52);
+			System.out.println(aHashMap.get("rudds"));
+		}
+		catch (RemoteException anException) { }
+		catch (MalformedURLException anException) { }
+		catch (NotBoundException anException) { }
+	}
+}

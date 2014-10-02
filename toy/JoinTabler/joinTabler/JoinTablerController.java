@@ -13,6 +13,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FileDialog;
+import javax.swing.BoxLayout;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import java.awt.BorderLayout;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -72,7 +76,6 @@ public class JoinTablerController
         if(aButton.getText().equals("Join"))
 		{
 			JFrame aWindow = new JFrame();
-			//SAVEしたいとき
 			FileDialog aFileDialog = new FileDialog(aWindow,"Choose a file", FileDialog.SAVE);
 			aFileDialog.setVisible(true);
 			String aFilePath = aFileDialog.getDirectory()+aFileDialog.getFile()+".xls";
@@ -82,27 +85,46 @@ public class JoinTablerController
 		{
 			this.getModel().clearFiles();
 			this.getView().getDragArea().removeAll();
+			this.changeDropAreaIcon(this.getModel().dropImageURLBefore);
 			this.getView().getDragArea().repaint();
 		}
-		//System.out.println("コンポーネント数"+this.getView().getJoinButton().getComponentCount());
     }
 
 	public void drop(DropTargetDropEvent anEvent) 
 	{
 		Transferable aTrans = anEvent.getTransferable();
-		if (aTrans.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) 
+		if (aTrans.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) //ファイルでないとき
 		{
 			anEvent.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
 			try 
 			{
+
 				@SuppressWarnings("unchecked")
 				List<File> files = (List<File>)aTrans.getTransferData(DataFlavor.javaFileListFlavor);
+
+				for (File aFile : files) {
+					if (! aFile.getName().endsWith(".xls")) // Excelファイルでないとき
+					{
+						System.out.println("Don't XLS File: "+aFile.getName()+" Nothing!");
+						this.changeDropAreaIcon(this.getModel().dropImageURLBefore);
+						return;
+					}
+					else {
+						System.out.println("It's XLS File: "+aFile.getName());
+					}
+				}
+
+				JPanel aDragArea = this.getView().getDragArea();
+				aDragArea.remove(this.getView().dropImageLabel);
+				aDragArea.repaint();
+				aDragArea.setLayout(new BoxLayout(aDragArea, BoxLayout.PAGE_AXIS));
+
 				for (File aFile : files) 
 				{
+					String aFileName = aFile.getName();
 					this.getModel().setFile(aFile); //XLSファイルを登録する
 					this.getView().getDragArea().add(new JLabel(aFile.getName()));
 				}
-				//this.getView().repaint();
 				this.window.setVisible(true); //これで更新する
 			}
 			catch (UnsupportedFlavorException e) {
@@ -114,8 +136,32 @@ public class JoinTablerController
 		}
 	}
 
-	public void dragEnter(DropTargetDragEvent anEvent) {}
-	public void dragExit(DropTargetEvent anEvent) {}
+	private void changeDropAreaIcon(URL aURL)
+	{
+		if (!this.getModel().files.isEmpty()) { return; } //あればなにもしない
+		JoinTablerModel aModel = this.getModel();
+		JoinTablerView aView = this.getView();
+		JPanel aDragArea = aView.getDragArea();
+		aDragArea.remove(aView.dropImageLabel);
+		
+		ImageIcon anIcon = new ImageIcon(aURL);
+		aView.dropImageLabel = new JLabel(anIcon);
+		aView.dropImageLabel.setLocation(aModel.dropImageX,aModel.dropImageY);
+		aView.dropImageLabel.setSize(anIcon.getIconWidth(),anIcon.getIconHeight());
+		aDragArea.add(aView.dropImageLabel);
+		aDragArea.repaint();
+	}
+
+	public void dragEnter(DropTargetDragEvent anEvent)
+	{
+		this.changeDropAreaIcon(this.getModel().dropImageURLAfter);
+	}
+
+	public void dragExit(DropTargetEvent anEvent)
+	{
+		this.changeDropAreaIcon(this.getModel().dropImageURLBefore);
+	}
+
 	public void dragOver(DropTargetDragEvent anEvent) {}
 	public void dropActionChanged(DropTargetDragEvent anEvent) {}
 }

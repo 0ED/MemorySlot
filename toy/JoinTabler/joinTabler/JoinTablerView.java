@@ -1,6 +1,5 @@
 package joinTabler;
 
-import mvc.View;
 import joinTabler.Const;
 import joinTabler.JoinTablerModel;
 import joinTabler.JoinTablerController;
@@ -10,22 +9,18 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import java.awt.Graphics;
-import javax.swing.ScrollPaneLayout;
+import java.awt.BorderLayout;
+import java.net.URL;
 
-public class JoinTablerView extends View
+public class JoinTablerView extends mvc.View
 {
 	private JPanel dragArea;
 	private JScrollPane scrollArea;
 	private JButton joinButton;
 	private JButton resetButton;
-	private int buttonWidth;
-	private int buttonHeight;
-	private int scrollWidth;
-	private int scrollHeight;
-	private int centerWidth;
-	private int centerHeight;
+	protected JLabel dropImageLabel;
 
     /**
      * 
@@ -37,51 +32,59 @@ public class JoinTablerView extends View
 		this.joinButton = null;
 		this.resetButton = null;
 		this.setSize(Const.WIN_WIDTH, Const.WIN_HEIGHT);
-		this.buttonWidth = (int)(this.getWidth()*0.45);
-		this.buttonHeight = (int)(this.getHeight()*0.11);
-		this.scrollWidth = (int)(this.getWidth()*0.8);
-		this.scrollHeight = (int)(this.getHeight()*0.7);
-		this.centerWidth = this.getWidth()/2;
-		this.centerHeight = this.getHeight()/2;
 		this.createDragArea();
 		this.createButtons();
     }
 
 	private void createDragArea()
 	{
+		JoinTablerModel aModel = this.getModel();
+
+		ImageIcon anIcon = new ImageIcon(aModel.dropImageURLBefore);
+		this.dropImageLabel = new JLabel(anIcon);
+		this.dropImageLabel.setLocation(aModel.dropImageX, aModel.dropImageY);
+		this.dropImageLabel.setSize(anIcon.getIconWidth(), anIcon.getIconHeight());
+
 		this.dragArea = new JPanel();
 		this.dragArea.setBackground(new Color(255, 255, 255));
-		this.dragArea.setLayout(new BoxLayout(this.dragArea, BoxLayout.PAGE_AXIS));
+		this.dragArea.setLayout(null);
+		this.dragArea.add(this.dropImageLabel);
+
 		this.scrollArea = new JScrollPane(dragArea);
 		this.scrollArea.setLocation(
-			this.centerWidth - this.scrollWidth/2,
-			this.centerHeight - this.scrollHeight/2 - 30
+			aModel.centerX - aModel.scrollWidth/2,
+			aModel.centerY - aModel.scrollHeight/2 - 30
 		);
-		this.scrollArea.setSize(this.scrollWidth,this.scrollHeight);
+		this.scrollArea.setBackground(new Color(255, 255, 255));
+		this.scrollArea.setSize(aModel.scrollWidth,aModel.scrollHeight);
         this.add(this.scrollArea);
 	}
 
 	private void createButtons()
 	{
+		JoinTablerModel aModel = this.getModel();
+
 		this.joinButton = new JButton("Join");
 		this.resetButton = new JButton("Reset");
-		
-
 		this.joinButton.setLocation(
-			this.centerWidth - this.buttonWidth - 5,
-			this.centerHeight + this.scrollHeight/2 - 20
+			aModel.centerX - aModel.buttonWidth - 5,
+			aModel.centerY + aModel.scrollHeight/2 - 20
 		);
 		this.resetButton.setLocation(
-			this.centerWidth + 5,
-			this.centerHeight + this.scrollHeight/2 - 20
+			aModel.centerX + 5,
+			aModel.centerY + aModel.scrollHeight/2 - 20
 		);
-		this.joinButton.setSize(buttonWidth,buttonHeight);
-		this.resetButton.setSize(buttonWidth,buttonHeight);
+		this.joinButton.setSize(aModel.buttonWidth,aModel.buttonHeight);
+		this.resetButton.setSize(aModel.buttonWidth,aModel.buttonHeight);
 
         this.add(this.joinButton);
         this.add(this.resetButton);
 	}
 
+	public JoinTablerModel getModel()
+	{
+		return (JoinTablerModel) (this.model);
+	}
 
 	public JPanel getDragArea()
 	{
@@ -104,10 +107,10 @@ public class JoinTablerView extends View
 	}
 	public void paintComponent(Graphics aGraphics)
 	{
+		super.paintComponent(aGraphics);
+
 		int width = this.getWidth();
 		int height = this.getHeight();
-		super.paintComponent(aGraphics);
-		int num = 200;
 		aGraphics.setColor(new Color(180,0,0));	
 		aGraphics.fillRect(0, 0, width, height);
 	}

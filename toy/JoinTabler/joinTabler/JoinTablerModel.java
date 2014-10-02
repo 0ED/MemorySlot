@@ -17,6 +17,9 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
 import java.util.Iterator;
+import java.util.Locale;
+import javax.swing.ImageIcon;
+import java.net.URL;
 
 import jxl.Cell;
 import jxl.Sheet;
@@ -32,19 +35,43 @@ import jxl.write.biff.RowsExceededException;
 
 public class JoinTablerModel extends mvc.Model
 {
-	private List<File> files;
+	protected List<File> files;
 	private BufferedReader reader;
 	private Pattern pattern_info;
-	private Pattern pattern_end;
 	private Workbook inWorkbook;
 	private WritableWorkbook outWorkbook;
+	protected int width;
+	protected int height;
+	protected int buttonWidth;
+	protected int buttonHeight;
+	protected int scrollWidth;
+	protected int scrollHeight;
+	protected int centerX;
+	protected int centerY;
+	protected int dropImageX;
+	protected int dropImageY;
+	protected URL dropImageURLBefore;
+	protected URL dropImageURLAfter;
 
     public JoinTablerModel() 
 	{
-		
+		this.dropImageURLBefore = this.getClass().getClassLoader().getResource(Const.DRAG_AND_DROP_BEFORE_FILE);
+		this.dropImageURLAfter = this.getClass().getClassLoader().getResource(Const.DRAG_AND_DROP_AFTER_FILE);
+
+		this.width = Const.WIN_WIDTH;
+		this.height = Const.WIN_HEIGHT;
+		this.buttonWidth = (int)(this.width*0.45);
+		this.buttonHeight = (int)(this.height*0.11);
+		this.scrollWidth = (int)(this.width*0.8);
+		this.scrollHeight = (int)(this.height*0.7);
+		this.centerX = this.width/2;
+		this.centerY = this.height/2;
+
+		ImageIcon anIcon = new ImageIcon(this.dropImageURLBefore);
+		this.dropImageX = this.scrollWidth/2 - anIcon.getIconWidth()/2;
+		this.dropImageY = this.scrollHeight/2 - anIcon.getIconHeight()/2;
 		this.files = new ArrayList<File>();
 		this.pattern_info = Pattern.compile("([A-Z]+\\d+)=([A-Z]+\\d+)");
-		this.pattern_end = Pattern.compile("end");
 		this.loadDestinationFile();
     }
 	
@@ -139,6 +166,9 @@ public class JoinTablerModel extends mvc.Model
 		WorkbookSettings aWorkbookSettings = null;
 
 		aWorkbookSettings = new WorkbookSettings();
+		aWorkbookSettings.setLocale(new Locale("ja","JP"));
+		aWorkbookSettings.setEncoding("Cp1252");
+		aWorkbookSettings.setWriteAccess("something");
 		aWorkbookSettings.setGCDisabled(true);
 
 		Iterator<File> anIterator = this.files.iterator();
@@ -222,4 +252,5 @@ public class JoinTablerModel extends mvc.Model
 	{
 		JOptionPane.showMessageDialog(null, aString,"おたべさん, 想定内のエラー!",JOptionPane.PLAIN_MESSAGE);
 	}
+
 }

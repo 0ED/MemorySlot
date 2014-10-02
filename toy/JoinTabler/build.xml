@@ -9,7 +9,7 @@
   <property name="destdir" value="./Classes" />
   <property name="docdir" value="./JavaDoc" />
   <property name="propertydir" value="./Properties" />
-  <property name="destination_list" value="destination_list" />
+  <property name="imagedir" value="./Images" />
   <property name="instdir" value="./${ant.project.name}.app/Contents/Resources/Java" />
   <property name="copyright" value="Copyright 2008-2012 AOKI Atsushi. All Right Reserved." />
   <property name="zipname" value="${ant.project.name}" />
@@ -55,7 +55,9 @@
 	  manifest="${package}.mf">
 	  <zipfileset src="${jxl}.jar" />
 	  <zipfileset src="${mvc}.jar" />
-	  <fileset file="./${propertydir}/${destination_list}.properties" />
+	  <fileset file="./${propertydir}/destination_list.properties" />
+	  <fileset file="./${imagedir}/drag-and-drop_before.png" />
+	  <fileset file="./${imagedir}/drag-and-drop_after.png" />
   </jar>
   <echo>on ${date} at ${time}</echo>
   </target>

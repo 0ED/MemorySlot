@@ -40,16 +40,16 @@ public class MenuBarView extends JMenuBar
 	 * メニュー、メニューバー、アイテムの色を設定する
 	 */
 	private void setBackColor() {
-		this.setBackground(new Color(200,255,255));
+		this.setBackground(new Color(255,255,255));
 		for(int m=0; m<menu.length; m++)
 		{
-			menu[m].setBackground(new Color(200,255,255));
+			menu[m].setBackground(new Color(255,255,255));
 
 			for(int i=0; i<item[m].length; i++) {
 				/* メニューは各メニュー項目の数が色々なのでNULLになるときがある
 				   もしメニューが増えたときの為に、こうしておく*/
 				if(item[m][i] != null) {
-					item[m][i].setBackground(new Color(240,255,255));
+					item[m][i].setBackground(new Color(255,255,255));
 				}
 			}
 		}
