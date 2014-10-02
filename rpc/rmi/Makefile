@@ -21,9 +21,9 @@ all:
 rmi:	
 	rmiregistry ${PORT} 
 server:
-	java -Djava.rmi.server.codebase=file:///jp/laas/ $(SERVER) $(RMI_HOST)/$(REGISTRY_NAME)
+	java -Djava.rmi.server.codebase=file:///jp/laas/ $(SERVER) $(RMI_HOST)
 client:
-	java ${CLIENT} $(RMI_HOST)/$(REGISTRY_NAME)
+	java ${CLIENT} $(RMI_HOST)
 clean:
 	${RM} ${CLASSES}
 	${RM} ${STUBDIR}/${ROBJ}_Stub.java
