@@ -1,3 +1,0 @@
-add mina 222
-list
-quit
