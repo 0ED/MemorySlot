@@ -1,19 +1,18 @@
 #MemorySlot
 
-MemorySlot is card game. This game extend Japanese `Shinkensuijaku`.
-Now, You can only watch an exposition of japanese.
-It's no such an exposition of English, sorry. :'-(
+MemorySlotはカードゲームで，日本の神経衰弱を拡張したゲームです．
+現在，日本語の説明書しか見ることができないが，そのうち英語の説明書も作ろうと考えています．
 *Read this in other languages: [English](README.md), [日本語](README.ja.md)*
 
-See diagram below.
+下図を見てください．
 <img alt="First display." src="https://github.com/0ED/MemorySlot/blob/master/images/slot1.png" />
-This diagram is start screen.
-You can push the button, "Start" or "Rule Description".
-if you pushed "Start" button, the screen become like diagram below.
+上図はスタート画面です．
+スタートボタンとルール説明ボタンがあります．
+スタートボタンを押すと，画面は下図のような画面になります．
 <img alt="Second display." src="https://github.com/0ED/MemorySlot/blob/master/images/slot2.png" />
-You can do game to the screen. 
+この画面上でゲームできます．
 
-if you pushed "Rule Description" button, the screen become like diagram below.
+次に，ルール説明ボタンを押すと，画面は下図のような画面になります．
 <img alt="Description display." src="https://github.com/0ED/MemorySlot/blob/master/images/description.png" />
 
-Let's try it !
+幸運を祈る！
