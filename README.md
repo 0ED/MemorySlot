@@ -9,5 +9,10 @@ See diagram below.
 This diagram is start screen.
 You can push the button, "Start" or "Rule Description".
 if you pushed "Start" button, the screen become like diagram below.
-
 <img alt="Second display." src="https://github.com/0ED/MemorySlot/blob/master/images/slot2.png" />
+You can do game to the screen. 
+
+if you pushed "Rule Description" button, the screen become like diagram below.
+<img alt="Description display." src="https://github.com/0ED/MemorySlot/blob/master/images/description.png" />
+
+Let's try it !
