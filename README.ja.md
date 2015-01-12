@@ -2,6 +2,7 @@
 
 MemorySlotはカードゲームで，日本の神経衰弱を拡張したゲームです．
 現在，日本語の説明書しか見ることができないが，そのうち英語の説明書も作ろうと考えています．
+
 *Read this in other languages: [English](README.md), [日本語](README.ja.md)*
 
 下図を見てください．
