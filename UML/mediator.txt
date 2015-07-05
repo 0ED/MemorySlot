@@ -1,0 +1,26 @@
+【統合モジュール（Mediatorインタフェース）】
+Mediatorの実装クラスはGameBoardViewクラス
+
+メソッド名：clearBetChip
+引数：なし
+戻り値：なし
+
+メソッド名：removeScoreByBet
+引数：なし
+戻り値：なし
+
+メソッド名：happenCardEvent
+引数：TrumpModel[2], String
+戻り値：なし
+
+メソッド名：hitSlot
+引数：整数
+戻り値：なし
+
+【統合モジュール（Colleagueインタフェース）】
+メソッド名：setMediator
+引数：Mediator
+戻り値：なし
+
+
+

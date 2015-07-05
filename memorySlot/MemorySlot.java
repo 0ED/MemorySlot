@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import java.awt.event.ActionListener;
 
 public class MemorySlot extends JFrame {
-    
+
     /*
      * ここでのBoardView.HEIGHTとは、フレーム全体の内メニューバーと上フレームの分の44pxを抜いた640pxです。
      * ですのでフレーム全体のサイズは、「BoardView.WIDTH BoardView.HEIGHT+44」となっております。
@@ -18,31 +18,31 @@ public class MemorySlot extends JFrame {
      */
     private StartBoardView startBoardView;
     private GameBoardView gameBoardView;
-    
+
     /**
      * MemorySlotプログラムが作動する
      */
     public MemorySlot() {
-        getContentPane().setLayout(null); 
+        getContentPane().setLayout(null);
         setTitle("MemorySlot");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(BoardView.WIDTH, BoardView.HEIGHT+44); //メニューバーと上フレームの分の44px
         getContentPane().setLayout(null);
         setResizable(false); //サイズ調整できないように
-        
+
         //メニューバー
         MenuBarView menuBarView = new MenuBarView();
         MenuBarControl menuBarControl = new MenuBarControl(this,menuBarView);
-        
+
         //スタート画面
         startBoardView = new StartBoardView();
         StartBoardControl startBoardControl = new StartBoardControl(this,startBoardView);
-        
+
         getContentPane().add(startBoardView);
         setJMenuBar(menuBarView);
         setVisible(true);
     }
-    
+
     /**
      * ゲーム画面に切り替える
      */
@@ -52,7 +52,7 @@ public class MemorySlot extends JFrame {
         getContentPane().add(gameBoardView);
         gameBoardView.repaint();
     }
-    
+
     /**
      * スタート画面に切り替える
      */
@@ -64,9 +64,9 @@ public class MemorySlot extends JFrame {
             startBoardView.repaint();
         }
     }
-    
-    
-    
+
+
+
     /*
      * プログラムの実行部分
      */

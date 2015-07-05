@@ -1,0 +1,67 @@
+【ベットモジュール（BetModelクラス）】
+メソッド名：BetModel
+引数：なし
+戻り値：なし
+概要：Betするチップの初期化（clearChipを実行する）。
+
+メソッド名：addChip
+引数：整数
+戻り値：なし
+概要：Betするチップを追加する。
+
+メソッド名：getChip
+引数：整数
+戻り値：なし
+概要：Betしたチップを返す
+
+メソッド名：clearChip
+引数：なし
+戻り値：なし
+概要：Betしたチップを0にする
+
+
+【ベットモジュール（BetViewクラス）】
+メソッド名：BetView
+引数：BetModel
+戻り値：なし
+概要：「Betするためのチップラベル（$1、$5、$10、$25 ：チップは画像で表示）」と「クリアボタン」を表示する。
+
+メソッド名：addToLabelMouseListener
+引数： MouseListener
+戻り値：なし
+概要：「Betするためのチップラベル」にMouseListenerを設定する。（コントローラから設定する）
+
+メソッド名：addToButtonActionListener
+引数： ActionListener
+戻り値：なし
+概要：「クリアボタン」にActionListenerを設定する。（コントローラから設定する）
+
+メソッド名：paint
+引数：Graphics
+戻り値：なし
+概要：「Betするためのチップラベル」か「クリアボタン」が押されたとき呼び出される。ModelからgetChipで「Betしたチップ」を参照し、それをString型に変換後、Betした金額（テキスト表示）を再描画する。
+
+
+【ベットモジュール（BetControlクラス）】
+メソッド名：BetControl
+引数：BetModel, BetView
+戻り値：なし
+概要：「クリアボタン」と「Betのするためのチップラベル」にそれぞれActionListenerとMouseListenerを加える。
+
+メソッド名：mouseClicked
+引数：MouseEvent
+戻り値：なし
+概要：各Chipのボタン（$1、$5、$10、$25）のどれかを押すと呼び出され、そのボタンの金額に応じて、ModelからBetを加算する。このとき、Mediatorに通知（removeScoreByBet）し、スコアを下げてもらう。そして、Viewからrepaintで再描画する。
+
+メソッド名：actionPerformed
+引数： ActionEvent
+戻り値：なし
+概要：クリアのボタンを押すと呼び出され、ModelからBetを0にする。そして、Viewからrepaintで再描画する。
+
+メソッド名：setMediator
+引数：Mediator
+戻り値：なし
+概要：Mediator実装クラスからTrumpAreaを経由してこのメソッドを呼び出し、Mediatorをセットする。
+
+
+
